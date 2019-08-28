@@ -11,6 +11,9 @@ public class Euclid{
   {
     this.setX(_x);
     this.setY(_y);
+
+    if(x > y){this.swap()}
+
   }
 
 
@@ -26,16 +29,20 @@ public class Euclid{
 
   private void swap()
   {
+    System.out.println("x was greater than y so the numbers were flipped");
+
     int tmp = this.x;
     this.x = this.y;
     this.y = tmp;
   }
-
-  public int findGCD()
+  public void findGCD()
   {
-    int GCD = 0;
+    this.findGCD(this.x, this.y)
+  }
+  public void findGCD(int a, int b)
+  {
+    GCD = y%x
 
-    return GCD;
   }
 
 }
