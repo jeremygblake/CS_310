@@ -3,54 +3,36 @@
 
 public class Euclidian{
 
-  private int a;
-  private int b;
-  private int r;
+  private int a;        //num 1
+  private int b;        //num2 (greater, if not then swapped with a)
+  private int r;        //remainder
 
-  public Euclidian()
+  public void check()
   {
-    this.setA(1);
-    this.setB(1);
-  }
-
-  public Euclidian(int _a, int _b)
-  {
-    this.setA(_a);
-    this.setB(_b);
-
     if(a > b){this.swap();}
-
   }
 
-  public void setA(int _a)
+  private void swap()       //this will swap the variables is a is greater than b
   {
-    this.a = _a;
-  }
-
-  public void setB(int _b)
-  {
-    this.b = _b;
-  }
-
-  private void swap()
-  {
-    System.out.println("a was greater than b so the numbers were flipped");
+    System.out.println("The first number was greater than the second so the numbers were flipped...");
 
     int tmp = this.a;
     this.a = this.b;
     this.b = tmp;
   }
 
-
-  public int findGCD()
+  public int findGCD(int _a, int _b )     //this will give the user the option to call the function different ways...  this allows for a var set in the constructor than a parameterless call for returning the GCD
   {
-    return(this.findGCD(this.a, this.b));
+    this.a = _a;
+    this.b = _b;
+    this.check();
+    return(this.recursiveEuclidianAlgorithm(this.a,this.b));
   }
 
-  public int findGCD(int a, int b)
+  private int recursiveEuclidianAlgorithm(int a, int b)          //this allows for a paramaterless constructor but then setting the vars in the findGCD function call
   {
     r = b%a;
-    if (r != 0){a = findGCD(r,a);}
+    if (r != 0){a = recursiveEuclidianAlgorithm(r,a);}          //recursively returns until the
 
     return a;
 
