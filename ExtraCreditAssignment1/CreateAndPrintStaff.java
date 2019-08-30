@@ -3,13 +3,19 @@ import java.util.Scanner;
 public class CreateAndPrintStaff
 {
 
+  final int maxStaff = 3;
+  int currentStaff;
+
+
+  static Scanner in = new Scanner(System.in);
+
 
   public static void main(String[] args)
   {
-
-
-    Scanner in = new Scanner(System.in);
+    StaffMember staffMembers = new StaffMembers[maxStaff];
     boolean flag = true;
+    currentStaff = 0;
+
 
     while(flag)
     {
@@ -22,6 +28,7 @@ public class CreateAndPrintStaff
       {
         case 1 :
           System.out.println("");
+          createStaff();
           break;
 
         case 2 :
@@ -33,17 +40,47 @@ public class CreateAndPrintStaff
           break;
 
         default :
+          System.out.println("Inproper Input");
           continue;
       }
-
     }
   }
 
-  public static createStaff()
+  public static void createStaff()
   {
+    if(currentStaff == maxStaff)
+    {
+      System.out.println("Reached Staff Limit of: " + maxStaff);
+      return;
+    }
+
+    printCreateStaffMenu();
+    int staffType;
+    staffType = in.nextInt();
+    switch(staffType)
+    {
+      case 1:
+        break;
+
+      case 2:
+        break;
+
+      case 3:
+        break;
+
+      default:
+        System.out.println("Inproper Input");
+        break;
+    }
+
 
   }
 
+
+  public static void printCreateStaffMenu()
+  {
+    System.out.println("What Type of Staff:\n\n[1]     Volunteer\n\n[2]     Executive\n\n[3]     Hourly");
+  }
 
   public static void printMenu()
   {
