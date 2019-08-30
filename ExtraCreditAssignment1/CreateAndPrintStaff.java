@@ -15,50 +15,39 @@ public class CreateAndPrintStaff
     {
       printMenu();
 
-      try{
 
-        int selection = in.nextInt();
+      int selection = in.nextInt();
 
-        switch(selection)
-        {
-          case 1 :
-            System.out.println("");
-            break;
-
-          case 2 :
-            System.out.println("");
-            break;
-
-          case 3 :
-            System.out.println("");
-            break;
-
-          case 4 :
-            flag = false;
-            break;
-
-          default :
-            continue;
-        }
-
-
-      }catch(Exception e)
+      switch(selection)
       {
-        e.printStackTrace();
+        case 1 :
+          System.out.println("");
+          break;
 
-        System.out.print("System Error Try Again");
+        case 2 :
+          System.out.println("");
+          break;
 
+        case 3 :
+          flag = false;
+          break;
+
+        default :
+          continue;
       }
 
     }
   }
 
+  public static createStaff()
+  {
 
+  }
 
 
   public static void printMenu()
   {
-    System.out.println("Select an Option (type number and hit enter):\n\n[1] Add Staff Members\n\n[2] Remove Staff Members\n\n[3] Print Staff Members\n\n[4] Exit");
+    System.out.println("Welcome Enter Option to Continue:\n\n[1]     Create Staff Member\n\n[2]     Print Staff Members\n\n[3]     Exit");
   }
 
 }
