@@ -1,24 +1,40 @@
 public class StaffMember
 {
-  private   final int     min         = 10000;
-  private   final int     max         = 99999;
-  protected       int     EmployeeId;
-  protected       double  Hours;
+  private String id;
+  private String name;
+  protected int salary;
+  protected int hours;
 
-  public StaffMember()
+  public StaffMember(String _id, String _name)
   {
-
-  }
-  public int createEmployeeId()
-  {
-    int id = (int)((Math.random() * ((max - min) + 1)) + min);
-    return id;
-  }
-
-  public int createEmployeeId(int id)
-  {
-    return id+1;
+    this.id = _id;
+    this.name = _name;
   }
 
 
+  public String getId()
+  {
+    return this.id;
+  }
+  public void setId(String _id)
+  {
+    this.id = _id;
+  }
+  public int getSalary()
+  {
+    return this.salary;
+  }
+  public void setSalary(int _salary)
+  {
+    this.salary = _salary;
+  }
+
+  public void setHours(int _hours)
+  {
+    this.hours = _hours;
+  }
+  public int getHours()
+  {
+    return this.hours;
+  }
 }
