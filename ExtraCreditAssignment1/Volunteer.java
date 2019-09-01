@@ -1,4 +1,4 @@
-public class Volunteer extends StaffMemeber
+public class Volunteer extends StaffMember
 {
-  
+
 }

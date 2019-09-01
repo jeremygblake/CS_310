@@ -1,5 +1,4 @@
-
-public class HourlyEmployee extends HourlyEmployee
+public class HourlyEmployee extends Employee
 {
 
 }

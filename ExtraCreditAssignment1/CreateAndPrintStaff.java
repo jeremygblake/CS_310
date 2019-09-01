@@ -2,9 +2,14 @@ import java.util.Scanner;
 
 public class CreateAndPrintStaff
 {
+  StaffMember[] staffMembers = new StaffMember[9];
+  static final int totalStaff;
 
-  final int maxStaff = 3;
-  int currentStaff;
+  static final int maxOfEachStaff     = 3;
+  static       int currentVolunteers;
+  static       int currentHourly;
+  static       int currentExecutive;
+
 
 
   static Scanner in = new Scanner(System.in);
@@ -12,10 +17,8 @@ public class CreateAndPrintStaff
 
   public static void main(String[] args)
   {
-    StaffMember staffMembers = new StaffMembers[maxStaff];
     boolean flag = true;
     currentStaff = 0;
-
 
     while(flag)
     {
@@ -48,24 +51,21 @@ public class CreateAndPrintStaff
 
   public static void createStaff()
   {
-    if(currentStaff == maxStaff)
-    {
-      System.out.println("Reached Staff Limit of: " + maxStaff);
-      return;
-    }
-
     printCreateStaffMenu();
     int staffType;
     staffType = in.nextInt();
     switch(staffType)
     {
       case 1:
+        setStaff(1);
         break;
 
       case 2:
+      setStaff(2);
         break;
 
       case 3:
+      setStaff(3);
         break;
 
       default:
@@ -73,6 +73,30 @@ public class CreateAndPrintStaff
         break;
     }
 
+
+  }
+
+  public void setStaff(int staffType)
+  {
+    int income;
+
+    System.out.print("\nEnter Name: ")
+    String name = in.nextLine();
+
+    System.out.print("\nEnter Hours/Week: ");
+    int hours = in.nextInt();
+
+    if(staffType > 1)
+    {
+      System.out.print("\nEnter Annual Income")
+      income = in.nextInt();
+    }
+
+
+  }
+
+  public void printStaff()
+  {
 
   }
 
