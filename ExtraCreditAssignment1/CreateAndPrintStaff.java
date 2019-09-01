@@ -50,28 +50,12 @@ public class CreateAndPrintStaff
     printCreateStaffMenu();
     int staffType;
     staffType = in.nextInt();
-    switch(staffType)
+    if (staffType < 1 || staffType > 3)
     {
-      case 1:
-        setVoluneteer();
-        break;
-
-      case 2:
-        setExecutive();
-        break;
-
-      case 3:
-        setHourly();
-        break;
-
-      default:
-        System.out.println("Inproper Input");
-        break;
+      return;
     }
-  }
-  public void setStaff(int staffType)
-  {
 
+    String id = createEmployeeId();
     int income;
 
     System.out.print("\nEnter Name: ");
@@ -87,7 +71,7 @@ public class CreateAndPrintStaff
         if(currentHourly > 2){maxError();return;}
         System.out.print("\nEnter Weekly Income: ");
         income = in.nextInt();
-        staffMembers[currentStaff] = new Hourly(name, hours, income, staffType);
+        staffMembers[currentStaff] = new Hourly(id, name, hours, income);
         currentHourly++;
         currentStaff++;
         return;
@@ -95,13 +79,13 @@ public class CreateAndPrintStaff
       if(currentExecutive > 2){maxError();return;}
       System.out.print("\nEnter Annual Income: ");
       income = in.nextInt();
-      staffMembers[currentStaff] = new Executive(name, hours, income, staffType);
+      staffMembers[currentStaff] = new Executive(id, name, income);
       currentExecutive++;
       currentStaff++;
       return;
     }
     if(currentHourly > 2){maxError();return;}
-    staffMembers[currentStaff] = new Volunteer(name, hours);
+    staffMembers[currentStaff] = new Volunteer(id, name, hours);
     currentHourly++;
     currentStaff++;
 
@@ -112,10 +96,10 @@ public class CreateAndPrintStaff
     System.out.println("Cannot Add More than 3 of Selected Type");
   }
 
-  public static string createEmployeeId()
+  public static String createEmployeeId()
   {
-    string id;
-    id = "00" + (currentStaff + 1).toString();
+    String id;
+    id = "00" + Integer.toString(currentStaff + 1);
 
     return id;
   }

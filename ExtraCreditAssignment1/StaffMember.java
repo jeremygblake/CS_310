@@ -11,6 +11,19 @@ public class StaffMember
     this.name = _name;
   }
 
+  public void setName(String _name)
+  {
+    this.name = _name;
+  }
+  public String getName()
+  {
+    return this.name;
+  }
+  public String getPosition()
+  {
+    return this.getClass().getName();
+  }
+
 
   public String getId()
   {
