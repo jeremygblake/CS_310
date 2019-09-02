@@ -2,7 +2,7 @@ public class StaffMember
 {
   private String id;
   private String name;
-  protected int salary;
+  protected String salary;
   protected int hours;
 
   public StaffMember(String _id, String _name)
@@ -23,8 +23,6 @@ public class StaffMember
   {
     return this.getClass().getName();
   }
-
-
   public String getId()
   {
     return this.id;
@@ -33,11 +31,11 @@ public class StaffMember
   {
     this.id = _id;
   }
-  public int getSalary()
+  public String getSalary()
   {
     return this.salary;
   }
-  public void setSalary(int _salary)
+  public void setSalary(String _salary)
   {
     this.salary = _salary;
   }

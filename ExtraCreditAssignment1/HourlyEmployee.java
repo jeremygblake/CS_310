@@ -1,19 +1,14 @@
 public class HourlyEmployee extends Employee
 {
-  public HourlyEmployee(String _id, String _name, int salary, int _hours)
+  public HourlyEmployee(String _id, String _name, String salary, int _hours)
   {
     super(_id, _name, salary);
     this.hours = _hours;
   }
 
-  public int getHours()
+  public String getSalary()
   {
-    return this.hours;
-  }
-
-  public void setHours(int _hours)
-  {
-    this.hours = _hours;
+    return this.salary + " Weekly";
   }
 
 }

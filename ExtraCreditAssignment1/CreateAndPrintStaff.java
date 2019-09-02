@@ -2,25 +2,21 @@ import java.util.Scanner;
 
 public class CreateAndPrintStaff
 {
-  StaffMember[] staffMembers = new StaffMember[9];
+  static StaffMember[] staffMembers = new StaffMember[9];
   static int currentStaff;
   static final int maxOfEachStaff     = 3;
   static int currentVolunteers;
   static int currentHourly;
   static int currentExecutive;
-
   static Scanner in = new Scanner(System.in);
 
   public static void main(String[] args)
   {
     boolean flag = true;
     currentStaff = 0;
-
     while(flag)
     {
       printMenu();
-
-
       int selection = in.nextInt();
 
       switch(selection)
@@ -31,7 +27,7 @@ public class CreateAndPrintStaff
           break;
 
         case 2 :
-          System.out.println("");
+          printStaff();
           break;
 
         case 3 :
@@ -56,39 +52,42 @@ public class CreateAndPrintStaff
     }
 
     String id = createEmployeeId();
-    int income;
-
-    System.out.print("\nEnter Name: ");
-    String name = in.nextLine();
-
-    System.out.print("\nEnter Hours/Week: ");
-    int hours = in.nextInt();
+    String income;
 
     if(staffType > 1)
     {
-      if(staffType == 2)
+      if(staffType == 3)
       {
         if(currentHourly > 2){maxError();return;}
+        System.out.print("\nEnter Name: ");
+        String name = in.next();
+        System.out.print("\nEnter Hours/Week: ");
+        int hours = in.nextInt();
         System.out.print("\nEnter Weekly Income: ");
-        income = in.nextInt();
-        staffMembers[currentStaff] = new Hourly(id, name, hours, income);
+        income = in.next();
+        staffMembers[currentStaff] = new HourlyEmployee(id, name, income, hours);
         currentHourly++;
         currentStaff++;
         return;
       }
       if(currentExecutive > 2){maxError();return;}
+      System.out.print("\nEnter Name: ");
+      String name = in.next();
       System.out.print("\nEnter Annual Income: ");
-      income = in.nextInt();
-      staffMembers[currentStaff] = new Executive(id, name, income);
+      income = in.next();
+      staffMembers[currentStaff] = new ExecutiveEmployee(id, name, income);
       currentExecutive++;
       currentStaff++;
       return;
     }
     if(currentHourly > 2){maxError();return;}
+    System.out.print("\nEnter Name: ");
+    String name = in.next();
+    System.out.print("\nEnter Hours/Week: ");
+    int hours = in.nextInt();
     staffMembers[currentStaff] = new Volunteer(id, name, hours);
     currentHourly++;
     currentStaff++;
-
   }
 
   public static void maxError()
@@ -104,12 +103,18 @@ public class CreateAndPrintStaff
     return id;
   }
 
-  public void printStaff()
+  public static void printStaff()
   {
-    System.out.println("STAFF:\n");
-    for( int i = 0; i < staffMembers.length; i++)
+    if(currentStaff == 0)
     {
-      System.out.print("ID " + staffMembers[i].getID() + " " + staffMembers[i].getName() + ", " + staffMembers[i].getPosition() + ", Salary " + staffMembers[i].getSalary());
+      System.out.println("No Employees");
+      return;
+    }
+
+    System.out.println("STAFF:\n");
+    for( int i = 0; i < currentStaff; i++)
+    {
+      System.out.println("ID " + staffMembers[i].getId() + " " + staffMembers[i].getName() + ", " + staffMembers[i].getPosition() + ", Salary " + staffMembers[i].getSalary());
 
     }
   }
