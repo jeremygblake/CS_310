@@ -8,7 +8,7 @@ public class ExecutiveEmployee extends Employee
 
   public String getSalary()
   {
-    return this.salary " Annually";
+    return this.salary + " Annually";
   }
 
 
