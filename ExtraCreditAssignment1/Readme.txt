@@ -45,13 +45,32 @@ Class Descriptions:
           String getSalary()
                - returns the salary along with concatenating it with "Annually"
      HourlyEmployee:
-
-
+          HourlyEmpoyee(String _id, String _name, String salary)
+               - calls the super sending the data in _id, _name, and _salary
+          String getSalary()
+               - returns the protected variable salary along with concatenating it with " Weekly"
 
      StaffMember:
           StaffMember(String _id, String _name)
-               - sets the paramaters to the protected variables associated with them
-
+               - sets the parameters to the protected variables associated with them
+          void setName(String _name)
+               - sets _name to protected variable name
+          String getName()
+               - returns name
+          String getPosition()
+               - return the position of a staff member
+          void setId(String _id)
+               - set staff id
+          String getId()
+               - returns the staff id
+          void setSalary(String _salary)
+               - sets the variable _salary to protected variable salary
+          void getSalary()
+               - returns the protected variable salary
+          void setHours(int _hours)
+               - sets _hours to protected variable hours
+          String geHours()
+               - returns the protected variable hours
      Volunteer:
           Volunteer(String _id, String _name, int _hours)
                - calls the super along with sending the data stored in _id and _name
