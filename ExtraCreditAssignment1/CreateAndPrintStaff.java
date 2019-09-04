@@ -50,7 +50,7 @@ public class CreateAndPrintStaff
     {
       return;
     }
-
+    //there is an issue with indexoutofbounds in the parse
     String id = createEmployeeId();
     String income;
 

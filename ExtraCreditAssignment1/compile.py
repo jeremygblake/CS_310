@@ -9,7 +9,7 @@ for file in os.listdir(directory):
     print(file)
     os.system('javac ' + file)
 
-classStr = "jar -cfvm ExtraCredit1.jar Manifest.txt "
+classStr = "jar -cfvm ExtraCredit1.jar Manifest.txt Readme.txt "
 
 for file in os.listdir(directory):
     if  file[-6:] != '.class':
