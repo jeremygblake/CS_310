@@ -12,14 +12,14 @@ public class CreateAndPrintStaff
 
   public static void main(String[] args)
   {
-    boolean flag = true;
+    boolean flag = true; //controls the while loop
     currentStaff = 0;
     while(flag)
     {
-      printMenu();
-      int selection = in.nextInt();
+      printMenu();  //prints the main menu to keep it seperate and clean looking
+      int selection = in.nextInt();   //takes input from the user
 
-      switch(selection)
+      switch(selection)  //the switch statement controls the users decisions
       {
         case 1 :
           System.out.println("");
@@ -35,23 +35,23 @@ public class CreateAndPrintStaff
           break;
 
         default :
-          System.out.println("Inproper Input");
+          System.out.println("Inproper Input");  //error handling
           continue;
       }
     }
   }
 
-  public static void createStaff()
+  public static void createStaff()  //this is called from the main method when the user chooses the optio nto create a new staff member
   {
-    printCreateStaffMenu();
+    printCreateStaffMenu();       //prints the menu to keep it seperate and clean
     int staffType;
     staffType = in.nextInt();
-    if (staffType < 1 || staffType > 3)
+    if (staffType < 1 || staffType > 3)  //error handling
     {
       return;
     }
     //there is an issue with indexoutofbounds in the parse
-    String id = createEmployeeId();
+    String id = createEmployeeId(); 
     String income;
 
     if(staffType > 1)

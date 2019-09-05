@@ -1,3 +1,12 @@
+Usage Instructions:
+
+[1] Command Line:   java -jar ExtraCredit1.jar
+
+[2] Type in the number at the beginning at each option and hit enter to confirm your selection.
+      Note: You can only exit the program by selecting the exit option at the main menu
+
+[3] Select Staff type by typing the associates number and press enter.
+
 
 
 Classes Used:
