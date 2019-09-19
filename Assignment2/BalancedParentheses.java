@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Balances Parentheses
 {
-l
+
   public static void main (String[] args)
   {
     Scanner in = new Scanner(System.in);
@@ -18,14 +18,37 @@ l
     {
       System.out.println("Inproper Path!  Exiting...");
       return;
-    }m
+    }
+    StackInterface stack = new StackInterface();
+
     try{
-      BufferedReader br = new BufferedReader(file):
-      tmp_char = br.read();
-      if(tmp_char == '{' | tmp_char == '(')
+
+      BufferedReader br = new BufferedReader(file);
+      boolean flag = false;
+
+      while((c = br.read()) != -1)
       {
-        //TODO: loop until EOF or end Parentheses
+        if(c == '(' | c == '{')
+        {
+          flag == true;
+          stack.push(c);
+        }
+        else if(c == ')' | c == '}')
+        {
+          flag = false;
+          stack.push(c);
+          if (c != stack.pop())
+          {
+            System.out.print("NOT BALANCED");
+          }
+        }
+        if(flag == true)
+        {
+          stack.push(c):
+        }
       }
+
+
     }catch(IOException e)
     {
       e.printStackTrace();

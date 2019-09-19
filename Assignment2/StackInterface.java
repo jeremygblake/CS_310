@@ -1,5 +1,5 @@
 public interface StackInterface{
-  public void push(char);
+  public void push();
   public char pop();
 
 }
