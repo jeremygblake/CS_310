@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Balances Parentheses
 {
-
+l
   public static void main (String[] args)
   {
     Scanner in = new Scanner(System.in);
@@ -18,13 +18,13 @@ public class Balances Parentheses
     {
       System.out.println("Inproper Path!  Exiting...");
       return;
-    }
+    }m
     try{
       BufferedReader br = new BufferedReader(file):
       tmp_char = br.read();
       if(tmp_char == '{' | tmp_char == '(')
       {
-        //loop until EOF or end Parentheses
+        //TODO: loop until EOF or end Parentheses
       }
     }catch(IOException e)
     {
