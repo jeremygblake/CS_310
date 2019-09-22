@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.util.Scanner;
 
-public class Balances Parentheses
+public class BalancedParentheses
 {
 
   public static void main (String[] args)
