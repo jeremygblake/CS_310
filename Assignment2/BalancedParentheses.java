@@ -40,6 +40,7 @@ public class Balances Parentheses
           if (c != stack.pop())
           {
             System.out.print("NOT BALANCED");
+
           }
         }
         if(flag == true)
