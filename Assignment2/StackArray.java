@@ -1,4 +1,4 @@
-public class StackArray <E> implements StackInterface
+public class StackArray<E> implements StackInterface
 {
   private E[] stack = null;
 
