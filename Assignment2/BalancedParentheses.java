@@ -17,7 +17,7 @@ public class BalancedParentheses
     }
     BufferedReader br = new BufferedReader(file);
 
-    Stack<Character> stack = new Stack<Character>(300);
+    StackArray<Character> stack = new StackArray<Character>(300);
 
     while((tmp_char = br.read()) != null)
     {
