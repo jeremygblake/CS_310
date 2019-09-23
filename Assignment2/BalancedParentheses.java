@@ -1,58 +1,49 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.util.Scanner;
 
 public class BalancedParentheses
 {
 
-  public static void main (String[] args)
+  BufferedReader br = new BufferedReader(file);
+
+  public static void main (String[] args) throws IOException
   {
-    Scanner in = new Scanner(System.in);
 
-    System.out.println("Input the file path for the input file: ");
-    String file_path = in.next();
-    File file = new File(file_path);
-    String tmp_char = "";
-
-    if(!file.exists() || file.isDirectory())
+    File file = new File("input.txt");
+    if(file.isDirectory() || !file.exists())
     {
-      System.out.println("Inproper Path!  Exiting...");
+      System.out.println("404 - File Not Found Error")
       return;
     }
+
     StackInterface stack = new StackInterface();
 
-    try{
-
-      BufferedReader br = new BufferedReader(file);
-      boolean flag = false;
-
-      while((c = br.read()) != -1)
+    while((tmp_char = br.read()) != null)
+    {
+      if(tmp_char == '{')
       {
-        if(c == '(' | c == '{')
-        {
-          flag == true;
-          stack.push(c);
-        }
-        else if(c == ')' | c == '}')
-        {
-          flag = false;
-          stack.push(c);
-          if (c != stack.pop())
-          {
-            System.out.print("NOT BALANCED");
+        stack.push(tmp_char)
 
-          }
-        }
-        if(flag == true)
-        {
-          stack.push(c):
-        }
+      }
+    }
+
+
+    BufferedReader br = new BufferedReader(file);
+    boolean flag = false;
+
+
+  }
+
+  public readLoop()
+  {
+    Char tmp_char = '';
+    while((tmp_char = br.read()) != null)
+    {
+      if(tmp_char == '{')
+      {
+        
       }
 
-
-    }catch(IOException e)
-    {
-      e.printStackTrace();
     }
   }
 }

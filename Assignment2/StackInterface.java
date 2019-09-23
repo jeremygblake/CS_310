@@ -1,5 +1,5 @@
-public interface StackInterface{
+public interface StackInterface<E> {
   public void push();
-  public char pop();
+  public E pop();
 
 }
