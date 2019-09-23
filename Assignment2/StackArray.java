@@ -1,28 +1,50 @@
-public class StackArray <E> implements StackInferface
+public class StackArray<E> implements StackInferface
 {
-  private E[] stack;
+  private E[] stack = null;
+
+  private int max;
+  private int size = 0;
+  private int top = -1;
 
 
 
-  public StackArray(int size)
+
+  public StackArray(int max)
   {
-    E = new E[size];
+    this.max = max;
+    this.stack = new E[max];
   }
 
   public void push(E e)
   {
-  //  TODO: implement
+    if(isFull())
+    {
+      return;
+    }
+    this.size++;
+    this.stack[++top];
   }
 
   public E pop()
   {
-    E e; //TODO: implement
+    if(isEmpty())
+    {
+      return null;
+    }
+    this.size--;
+    E e = this.stack[top];
+    this.stack[--top] = null;
     return e;
   }
 
   public boolean isEmpty()
   {
-    return true; //TODO: implement
+    return (this.size == 0);
+  }
+
+  public boolen isFull()
+  {
+    return (this.max == this.size);
   }
 
 }

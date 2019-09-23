@@ -12,38 +12,33 @@ public class BalancedParentheses
     File file = new File("input.txt");
     if(file.isDirectory() || !file.exists())
     {
-      System.out.println("404 - File Not Found Error")
+      System.out.println("404 - File Not Found Error");
       return;
     }
 
-    StackInterface stack = new StackInterface();
+    StackInterface<Char> stack = new StackInterface<Char>();
 
     while((tmp_char = br.read()) != null)
     {
-      if(tmp_char == '{')
+      if(tmp_char == "}")
       {
-        stack.push(tmp_char)
-
+        while(stack.pop() != "{")
+        {
+          if(stack.isEmpty())
+          {
+            System.out.print("Unbalanced Parentheses");
+            return;
+          }
+        }
       }
+      stack.push(tmp_char);
+
     }
+    System.out.println("Balanced Parentheses");
 
 
     BufferedReader br = new BufferedReader(file);
     boolean flag = false;
 
-
-  }
-
-  public readLoop()
-  {
-    Char tmp_char = '';
-    while((tmp_char = br.read()) != null)
-    {
-      if(tmp_char == '{')
-      {
-        
-      }
-
-    }
   }
 }
