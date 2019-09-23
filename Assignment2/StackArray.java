@@ -1,40 +1,39 @@
-public class StackArray<E> implements StackInterface
+public class StackArray implements StackInterface
 {
-  private E[] stack = null;
+  private char[] stack = null;
 
   private int max;
   private int size = 0;
   private int top = -1;
 
 
-
   @SuppressWarnings("unchecked")
   public StackArray(int max)
   {
     this.max = max;
-    this.stack = (E[]) new Object[max];
+    this.stack = new char[max];
   }
 
-  public void push(Object<E> e)
+  public void push(char c)
   {
     if(isFull())
     {
-      //return;
+      return;
     }
     this.size++;
-    this.stack[++top] = e;
+    this.stack[++top] = c;
   }
 
-  public E pop()
+  public char pop()
   {
     if(isEmpty())
     {
-      return null;
+      return ' ';
     }
     this.size--;
-    E e = this.stack[top];
-    this.stack[--top] = null;
-    return e;
+    char c = this.stack[top];
+    this.stack[--top] = ' ';
+    return c;
   }
 
   public boolean isEmpty()

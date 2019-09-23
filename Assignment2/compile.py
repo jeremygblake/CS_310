@@ -1,6 +1,5 @@
 import os
 
-
 directory = os.getcwd()
 
 for file in os.listdir(directory):

@@ -11,8 +11,8 @@ public class BalancedParentheses
 
     BufferedReader br = new BufferedReader(new FileReader("input.txt"));
 
-    StackArray<Char> stack = new StackArray<Char>(300);
-    
+    StackArray stack = new StackArray(300);
+
     char tmp_char = ' ';
 
     while((tmp_char = (char)br.read()) != -1)
