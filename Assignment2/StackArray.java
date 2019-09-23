@@ -1,4 +1,4 @@
-public class StackArray<E> implements StackInferface
+public class StackArray <E> implements StackInterface
 {
   private E[] stack = null;
 
@@ -8,21 +8,21 @@ public class StackArray<E> implements StackInferface
 
 
 
-
+  @SuppressWarnings("unchecked")
   public StackArray(int max)
   {
     this.max = max;
-    this.stack = new E[max];
+    this.stack = (E[]) new Object[max];
   }
 
-  public void push(E e)
+  public void push(Object<E> e)
   {
     if(isFull())
     {
-      return;
+      //return;
     }
     this.size++;
-    this.stack[++top];
+    this.stack[++top] = e;
   }
 
   public E pop()
@@ -42,7 +42,7 @@ public class StackArray<E> implements StackInferface
     return (this.size == 0);
   }
 
-  public boolen isFull()
+  public boolean isFull()
   {
     return (this.max == this.size);
   }

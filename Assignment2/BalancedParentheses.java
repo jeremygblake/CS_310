@@ -1,5 +1,5 @@
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class BalancedParentheses
@@ -9,21 +9,16 @@ public class BalancedParentheses
   public static void main (String[] args) throws IOException
   {
 
-    File file = new File("input.txt");
-    if(file.isDirectory() || !file.exists())
-    {
-      System.out.println("404 - File Not Found Error");
-      return;
-    }
-    BufferedReader br = new BufferedReader(file);
+    BufferedReader br = new BufferedReader(new FileReader("input.txt"));
 
     StackArray<Character> stack = new StackArray<Character>(300);
+    char tmp_char = ' ';
 
-    while((tmp_char = br.read()) != null)
+    while((tmp_char = (char)br.read()) != -1)
     {
-      if(tmp_char == "}")
+      if(tmp_char == '}')
       {
-        while(stack.pop() != "{")
+        while(stack.pop() != '{')
         {
           if(stack.isEmpty())
           {
