@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 
 public class BalancedParentheses
 {
 
-  BufferedReader br = new BufferedReader(file);
 
   public static void main (String[] args) throws IOException
   {
@@ -15,8 +15,9 @@ public class BalancedParentheses
       System.out.println("404 - File Not Found Error");
       return;
     }
+    BufferedReader br = new BufferedReader(file);
 
-    StackInterface<Char> stack = new StackInterface<Char>();
+    Stack<Character> stack = new Stack<Character>(300);
 
     while((tmp_char = br.read()) != null)
     {
@@ -35,10 +36,6 @@ public class BalancedParentheses
 
     }
     System.out.println("Balanced Parentheses");
-
-
-    BufferedReader br = new BufferedReader(file);
-    boolean flag = false;
 
   }
 }
