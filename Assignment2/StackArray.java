@@ -32,7 +32,8 @@ public class StackArray implements StackInterface
     }
     this.size--;
     char c = this.stack[top];
-    this.stack[--top] = ' ';
+    this.stack[top] = ' ';
+    top--;
     return c;
   }
 
@@ -45,5 +46,15 @@ public class StackArray implements StackInterface
   {
     return (this.max == this.size);
   }
-
+  public void printStack()
+  {
+    if(isEmpty())
+    {
+      return;
+    }
+    for(int i = 0; i < this.size; i++)
+    {
+      System.out.println(stack[i]);
+    }
+  }
 }

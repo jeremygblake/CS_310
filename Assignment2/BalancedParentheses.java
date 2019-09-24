@@ -4,34 +4,34 @@ import java.io.IOException;
 
 public class BalancedParentheses
 {
-
-
   public static void main (String[] args) throws IOException
   {
-
     BufferedReader br = new BufferedReader(new FileReader("input.txt"));
-
-    StackArray stack = new StackArray(300);
-
+    StackArray stack = new StackArray(10);
     char tmp_char = ' ';
 
     while((tmp_char = (char)br.read()) != -1)
     {
-      if(tmp_char == '}')
+      System.out.println(tmp_char);
+
+      if(tmp_char == '}' && ((int)stack.pop() + (int)tmp_char) != 248)
       {
-        while(stack.pop() != '{')
-        {
-          if(stack.isEmpty())
-          {
-            System.out.print("Unbalanced Parentheses");
-            return;
-          }
-        }
+        System.out.println("Unbalanced Parentheses");
       }
-      stack.push(tmp_char);
+      else if(tmp_char == '{')
+      {
+        stack.push(tmp_char);
+      }
+      else
+      {
+        continue;
+      }
 
     }
     System.out.println("Balanced Parentheses");
 
   }
+
+
+
 }
