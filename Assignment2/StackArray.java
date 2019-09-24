@@ -1,20 +1,21 @@
+/*
+Author:       Jeremy Goold
+Description:  LIFO stack implementation
+*/
 public class StackArray implements StackInterface
 {
   private char[] stack = null;
-
   private int max;
   private int size = 0;
   private int top = -1;
 
-
-  @SuppressWarnings("unchecked")
   public StackArray(int max)
   {
     this.max = max;
     this.stack = new char[max];
   }
 
-  public void push(char c)
+  public void push(char c) //add to end
   {
     if(isFull())
     {
@@ -24,7 +25,7 @@ public class StackArray implements StackInterface
     this.stack[++top] = c;
   }
 
-  public char pop()
+  public char pop()  //remove from end
   {
     if(isEmpty())
     {

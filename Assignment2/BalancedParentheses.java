@@ -10,13 +10,12 @@ public class BalancedParentheses
     StackArray stack = new StackArray(10);
     char tmp_char = ' ';
 
-    while((tmp_char = (char)br.read()) != -1)
+    while((tmp_char = (char)br.read()) != (char) 65535 )  //
     {
-      System.out.println(tmp_char);
-
-      if(tmp_char == '}' && ((int)stack.pop() + (int)tmp_char) != 248)
+      //System.out.println((int)tmp_char);  // TEST for data output
+      if(tmp_char == '}' && ((int)stack.pop() + (int)tmp_char) != 248) //ascii addition to check
       {
-        System.out.println("Unbalanced Parentheses");
+        break;  //breaks the loop if there is a ublanaced set
       }
       else if(tmp_char == '{')
       {
@@ -26,12 +25,15 @@ public class BalancedParentheses
       {
         continue;
       }
-
     }
-    System.out.println("Balanced Parentheses");
-
+    //in theory there should be an empty stack if the parentheses are balanced... there for check and print
+    if(stack.isEmpty())
+    {
+      System.out.println("Balanced Parentheses");
+    }
+    else
+    {
+      System.out.println("Unbalanced Parentheses");
+    }
   }
-
-
-
 }
