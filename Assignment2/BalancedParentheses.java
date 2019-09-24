@@ -8,16 +8,16 @@ public class BalancedParentheses
   {
     BufferedReader br = new BufferedReader(new FileReader("input.txt"));
     StackArray stack = new StackArray(10);
-    char tmp_char = ' ';
+    int tmp_char = ' ';
 
-    while((tmp_char = (char)br.read()) != (char) 65535 )  //
+    while((tmp_char = br.read()) != -1)
     {
       //System.out.println((int)tmp_char);  // TEST for data output
-      if(tmp_char == '}' && ((int)stack.pop() + (int)tmp_char) != 248) //ascii addition to check
+      if((char)tmp_char == '}' && (stack.pop() + tmp_char) != 248) //ascii addition to check
       {
         break;  //breaks the loop if there is a ublanaced set
       }
-      else if(tmp_char == '{')
+      else if((char)tmp_char == '{')
       {
         stack.push(tmp_char);
       }

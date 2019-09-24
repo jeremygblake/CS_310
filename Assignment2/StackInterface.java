@@ -1,6 +1,6 @@
 public interface StackInterface {
-  public void push(char c);
-  public char pop();
+  public void push(int c);
+  public int pop();
   public boolean isEmpty();
   public boolean isFull();
 

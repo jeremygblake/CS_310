@@ -4,7 +4,7 @@ Description:  LIFO stack implementation
 */
 public class StackArray implements StackInterface
 {
-  private char[] stack = null;
+  private int[] stack = null;
   private int max;
   private int size = 0;
   private int top = -1;
@@ -12,10 +12,10 @@ public class StackArray implements StackInterface
   public StackArray(int max)
   {
     this.max = max;
-    this.stack = new char[max];
+    this.stack = new int[max];
   }
 
-  public void push(char c) //add to end
+  public void push(int c) //add to end
   {
     if(isFull())
     {
@@ -25,14 +25,14 @@ public class StackArray implements StackInterface
     this.stack[++top] = c;
   }
 
-  public char pop()  //remove from end
+  public int pop()  //remove from end
   {
     if(isEmpty())
     {
       return ' ';
     }
     this.size--;
-    char c = this.stack[top];
+    int c = this.stack[top];
     this.stack[top] = ' ';
     top--;
     return c;
