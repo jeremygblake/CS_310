@@ -1,4 +1,4 @@
-import java.lang.RunTimeException;
+import java.lang.RuntimeException;
 
 /*
 Author:       Jeremy Goold
@@ -31,7 +31,7 @@ public class StackArray implements StackInterface
   {
     if(isEmpty())
     {
-      throw new RunTimeException("");
+      throw new RuntimeException("");
     }
     this.size--;
     Object c = this.stack[top];
