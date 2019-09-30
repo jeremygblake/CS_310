@@ -13,7 +13,7 @@ public class BalancedParentheses
     while((tmp_char = br.read()) != -1)
     {
       //System.out.println((int)tmp_char);  // TEST for data output
-      if((char)tmp_char == '}' && (stack.pop() + tmp_char) != 248) //ascii addition to check
+      if((char)tmp_char == '}' && ((int)stack.pop() + tmp_char) != 248) //ascii addition to check
       {
         break;  //breaks the loop if there is a ublanaced set
       }

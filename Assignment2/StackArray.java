@@ -1,10 +1,12 @@
+import java.lang.RunTimeException;
+
 /*
 Author:       Jeremy Goold
 Description:  LIFO stack implementation
 */
 public class StackArray implements StackInterface
 {
-  private int[] stack = null;
+  private Object[] stack = null;
   private int max;
   private int size = 0;
   private int top = -1;
@@ -12,7 +14,7 @@ public class StackArray implements StackInterface
   public StackArray(int max)
   {
     this.max = max;
-    this.stack = new int[max];
+    this.stack = new Object[max];
   }
 
   public void push(int c) //add to end
@@ -25,14 +27,14 @@ public class StackArray implements StackInterface
     this.stack[++top] = c;
   }
 
-  public int pop()  //remove from end
+  public Object pop()  //remove from end
   {
     if(isEmpty())
     {
-      return ' ';
+      throw new RunTimeException("");
     }
     this.size--;
-    int c = this.stack[top];
+    Object c = this.stack[top];
     this.stack[top] = ' ';
     top--;
     return c;

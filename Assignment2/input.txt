@@ -5,4 +5,4 @@ public class main{
     System.out.println("HELLO WORLD");
   }
 }
-{
+}
