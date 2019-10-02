@@ -10,5 +10,14 @@ public class StudentInfo
     this.id = id;
   }
 
+  public String getName()
+  {
+    return this.name;
+  }
+  public int getRedID()
+  {
+    return this.id;
+  }
+
 
 }

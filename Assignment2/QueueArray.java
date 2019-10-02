@@ -2,16 +2,16 @@ import java.lang.RuntimeException;
 
 public class QueueArray
 {
-  private Object[] elements;
+  private StudentInfo[] elements;
 	private int front = -1;
 	private int rear = -1;
-	private int numOfelements = 0;
+	private int numOfElements = 0;
 
 	public QueueArray(int size) {
-		this.elements = new Object[size];
+		this.elements = new StudentInfo[size];
 	}
 
-	public void enqueue(Object o) {
+	public void enqueue(StudentInfo o) {
 		if (isFull())
 			throw new RuntimeException("Full");
 		if (front == -1){
@@ -23,13 +23,13 @@ public class QueueArray
 			rear++;
 		elements[rear] = o;
 
-		numOfelements++; // add 1 to the element count
+		numOfElements++; // add 1 to the element count
 	}
 
-	public Object dequeue() {
+	public StudentInfo dequeue() {
 		if (isEmpty())
 			throw new RuntimeException("Empty");
-		Object dequeue_value = elements[front];
+		StudentInfo data = elements[front];
 
 		if(front==rear)
 		{
@@ -44,8 +44,8 @@ public class QueueArray
 		{
 			front++;
 		}
-		numOfelements--;
-		return dequeue_value;
+		numOfElements--;
+		return data;
 	}
 
 	public Object peek() {
@@ -53,10 +53,15 @@ public class QueueArray
 	}
 
 	public boolean isFull() {
-		return numOfelements == elements.length;
+		return numOfElements == elements.length;
 	}
 
 	public boolean isEmpty() {
-		return numOfelements == 0;
+		return numOfElements == 0;
 	}
+
+  public int size()
+  {
+    return this.numOfElements;
+  }
 }

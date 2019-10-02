@@ -1,1 +1,1 @@
-Main-Class: BalancedParentheses
+Main-Class: StudentRegistration
