@@ -7,6 +7,8 @@ import java.io.IOException;
 
 public class StudentRegistration
 {
+  private static int numberEnrolled = 0;
+
   public static void main(String[] args) throws FileNotFoundException, IOException
   {
     File            file = new File("Records.txt");
@@ -18,14 +20,13 @@ public class StudentRegistration
     String          record = "";
     QueueArray      queue = null;
 
-    int numberEnrolled = 0;
-    br.mark((int)file.length() + 1);
+    br.mark((int)file.length() + 1);          //marks the buffered Reader with
 
-    while((record = br.readLine()) != null)
+    while((record = br.readLine()) != null)   //checks the number of lines in the file to initialize an array to hold the records
     {
       numberEnrolled++;
     }
-    br.reset();
+    br.reset();                               //resets the bufferedReader
     String[] nameThenId;
     StudentInfo[] si_arr = new StudentInfo[numberEnrolled];
 
@@ -57,7 +58,6 @@ public class StudentRegistration
         queue.enqueue(si_arr[x]);
       }
     }
-
     while(true)
     {
       System.out.println("Enter Corresponding number: \n\n[1] Remove Enrolled Student by ID \n\n[2] Print Enrolled Student \n\n[3] Exit");
@@ -70,7 +70,7 @@ public class StudentRegistration
           break;
 
         case 2:
-          printStudents(enrolledStudents, queue, numberEnrolled);
+          printStudents(enrolledStudents, queue);
           break;
 
         case 3: return;
@@ -81,7 +81,7 @@ public class StudentRegistration
       }
     }
   }
-  public static void printStudents(StudentInfo[] enrolledStudents, QueueArray studentQueue, int numberEnrolled)
+  public static void printStudents(StudentInfo[] enrolledStudents, QueueArray studentQueue)
   {
     System.out.println("======= Enrolled Students ========");
 
@@ -92,7 +92,6 @@ public class StudentRegistration
     {
       System.out.println(" REDID: " + enrolledStudents[i].getRedID() + " Name: " + enrolledStudents[i].getName());
     }
-
 
     System.out.print("\n\n");
     System.out.println("======= Wait List =======");
@@ -112,13 +111,9 @@ public class StudentRegistration
       studentQueue.enqueue(tmp);
     }
     System.out.print("\n\n");
-
   }
-
-
   public static void dropStudent(StudentInfo[] enrolledStudents, QueueArray queue)
   {
-
     System.out.println("Students REDID: ");
     Scanner in = new Scanner(System.in);
     int inID = in.nextInt();
@@ -129,12 +124,23 @@ public class StudentRegistration
       if (enrolledStudents[x].getRedID() == inID)
       {
         System.out.println(enrolledStudents[x].getName() + " removed from class");
-        enrolledStudents[x] = queue.dequeue();
-        return;
+        if(queue == null || queue.isEmpty())
+        {
+          for(int i = x; i < numberEnrolled - 1; i++)
+          {
+            enrolledStudents[i] = enrolledStudents[i+1];
+          }
+          numberEnrolled--;
+          return;
+        }
+        else
+        {
+          enrolledStudents[x] = queue.dequeue();
+          System.out.println(enrolledStudents[x].getName() + " added");
+          return;
+        }
       }
     }
     System.out.println("STUDENT NOT FOUND");
-
   }
-
 }

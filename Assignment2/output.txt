@@ -1,0 +1,39 @@
+Enter number of seats in the class: 
+Enter Corresponding number: 
+
+[1] Remove Enrolled Student by ID 
+
+[2] Print Enrolled Student 
+
+[3] Exit
+======= Enrolled Students ========
+ REDID: 1234567 Name: FirstName
+ REDID: 123123 Name: first
+ REDID: 1233123 Name: f
+ REDID: 4444322 Name: fir
+ REDID: 44433 Name: fas
+ REDID: 7764 Name: glasd
+ REDID: 8008 Name: name
+ REDID: 1111 Name: test
+
+
+======= Wait List =======
+Empty
+
+
+Enter Corresponding number: 
+
+[1] Remove Enrolled Student by ID 
+
+[2] Print Enrolled Student 
+
+[3] Exit
+Students REDID: 
+test removed from class
+Enter Corresponding number: 
+
+[1] Remove Enrolled Student by ID 
+
+[2] Print Enrolled Student 
+
+[3] Exit
