@@ -1,14 +1,14 @@
 import java.lang.RuntimeException;
 
-public class Queue
+public class QueueArray
 {
   private Object[] elements;
 	private int front = -1;
 	private int rear = -1;
 	private int numOfelements = 0;
 
-	public Queue(int size) {
-		this.elements = new int[size];
+	public QueueArray(int size) {
+		this.elements = new Object[size];
 	}
 
 	public void enqueue(Object o) {
@@ -29,7 +29,7 @@ public class Queue
 	public Object dequeue() {
 		if (isEmpty())
 			throw new RuntimeException("Empty");
-		int dequeue_value = elements[front];
+		Object dequeue_value = elements[front];
 
 		if(front==rear)
 		{
