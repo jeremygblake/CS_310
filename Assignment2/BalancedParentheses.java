@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class BalancedParentheses
 {
-  public static void main (String[] args) throws IOException
+/*  public static void main (String[] args) throws IOException
   {
     BufferedReader br = new BufferedReader(new FileReader("input.txt"));
     StackArray stack = new StackArray(10);
@@ -35,5 +35,5 @@ public class BalancedParentheses
     {
       System.out.println("Unbalanced Parentheses");
     }
-  }
+  }*/
 }
