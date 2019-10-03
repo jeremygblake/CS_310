@@ -11,14 +11,17 @@ public class StudentRegistration
 
   public static void main(String[] args) throws FileNotFoundException, IOException
   {
-    File            file = new File("Records.txt");
-    FileReader      fr = new FileReader(file);
-    BufferedReader  br = new BufferedReader(fr);
-    int             seats = 0;
-    Scanner         in = new Scanner(System.in);
-    StudentInfo[]   enrolledStudents = null;
-    String          record = "";
-    QueueArray      queue = null;
+    File            file              = new File("Records.txt");    //input file  used mostly to take the length()/bytes of the file to input into the mark method
+    FileReader      fr                = new FileReader(file);      //sets file reader for stream
+    BufferedReader  br                = new BufferedReader(fr);
+    int             seats             = 0;
+    Scanner         in                = new Scanner(System.in);
+    StudentInfo[]   enrolledStudents  = null;
+    StudentInfo[]   si_arr;
+    String          record            = "";
+    QueueArray      queue             = null;
+    String[]        nameThenId;
+
 
     br.mark((int)file.length() + 1);          //marks the buffered Reader with
 
@@ -27,13 +30,12 @@ public class StudentRegistration
       numberEnrolled++;
     }
     br.reset();                               //resets the bufferedReader
-    String[] nameThenId;
-    StudentInfo[] si_arr = new StudentInfo[numberEnrolled];
+    si_arr = new StudentInfo[numberEnrolled];
 
     for(int j = 0; j < numberEnrolled; j++)
     {
       record = br.readLine();
-      nameThenId = record.split(" ", 2);
+      nameThenId = record.split(" ", 2);              //splits the string into a 2 string array  that is then fed into the constructor for studentinfo
       si_arr[j] = new StudentInfo(nameThenId[0], Integer.parseInt(nameThenId[1]));
     }
     br.close();
@@ -121,21 +123,21 @@ public class StudentRegistration
     int x;
     for (x = 0; x < enrolledStudents.length; x++)
     {
-      if (enrolledStudents[x].getRedID() == inID)
+      if (enrolledStudents[x].getRedID() == inID)                               //checks for matching ID
       {
         System.out.println(enrolledStudents[x].getName() + " removed from class");
         if(queue == null || queue.isEmpty())
         {
           for(int i = x; i < numberEnrolled - 1; i++)
           {
-            enrolledStudents[i] = enrolledStudents[i+1];
+            enrolledStudents[i] = enrolledStudents[i+1];               //if the queue is empty then we need to adjust the enrolled studetents array and not just replace
           }
-          numberEnrolled--;
+          numberEnrolled--;                                           //subtracts the enrolled amount to keep the logic safes
           return;
         }
         else
         {
-          enrolledStudents[x] = queue.dequeue();
+          enrolledStudents[x] = queue.dequeue();                          //sets the next queue element into the dropped students spot
           System.out.println(enrolledStudents[x].getName() + " added");
           return;
         }

@@ -18,4 +18,8 @@ for file in os.listdir(directory):
 
 print(classStr)
 
+for file in os.listdir(directory):
+    if file[-6:] == '.class':
+        os.remove(file)
+
 os.system(classStr)
