@@ -17,6 +17,7 @@ Usage:            Part 1 you must run the BalancedParentheses class.  You must a
 
 
 Files:
+Included:
                StackInterface.class
                StackArray.class  implements ^
 
@@ -27,7 +28,9 @@ Files:
 
                BalancedParentheses.class   main()   p1
                StudentRegistration.class   main()   p2
-
+Needed:
+               input.txt
+               Records.txt
 
 
 

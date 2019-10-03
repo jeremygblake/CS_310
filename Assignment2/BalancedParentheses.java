@@ -7,15 +7,16 @@ public class BalancedParentheses
   public static void main (String[] args) throws IOException
   {
     BufferedReader br = new BufferedReader(new FileReader("input.txt"));
-    StackArray stack = new StackArray(20);
+    StackArray stack = new StackArray(30);
     int tmp_char = ' ';
 
     while((tmp_char = br.read()) != -1)
     {
       //System.out.println((int)tmp_char);  // TEST for data output
-      if((char)tmp_char == '}' && ((int)stack.pop() + tmp_char) != 248) //ascii addition to check
+      if((char)tmp_char == '}' && (stack.isEmpty() ||((int)stack.pop() + tmp_char) != 248)) //ascii addition to check
       {
-        break;  //breaks the loop if there is a ublanaced set
+           stack.push('.');   //adds an element to the list so that the list will not be empty and the logic will return Unbalanced
+           break;  //breaks the loop if there is a ublanaced set
       }
       else if((char)tmp_char == '{')
       {
