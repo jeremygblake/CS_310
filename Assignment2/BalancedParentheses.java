@@ -7,7 +7,7 @@ public class BalancedParentheses
   public static void main (String[] args) throws IOException
   {
     BufferedReader br = new BufferedReader(new FileReader("input.txt"));
-    StackArray stack = new StackArray(10);
+    StackArray stack = new StackArray(20);
     int tmp_char = ' ';
 
     while((tmp_char = br.read()) != -1)
