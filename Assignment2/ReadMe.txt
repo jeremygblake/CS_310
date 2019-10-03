@@ -16,13 +16,17 @@ Usage:            Part 1 you must run the BalancedParentheses class.  You must a
 
 
 
-Files:            StackArray.class
-                  QueueArray.class
-                  StudentRegistration.class
-                  StudentInfo.class
-                  StackInterface.class
-                  QueueInterface.class
-                  BalancedParentheses.class
+Files:
+               StackInterface.class
+               StackArray.class  implements ^
+
+               QueueInterface.class
+               QueueArray.class  implements ^
+
+               StudentInfo.class
+
+               BalancedParentheses.class   main()   p1
+               StudentRegistration.class   main()   p2
 
 
 
@@ -86,3 +90,44 @@ constructor and Description
 
   int                                     size()
                                               returns the size of the
+
+
+
+
+class StudentInfo:
+
+constructor and Description
+
+  StudentInfo(String name, int id):
+  sets the name and id parameters to a local object variables
+
+
+  Modifier and Type                       Method and Description
+  String                                  getName()
+                                            retunrs the name object variable
+
+  int                                     getRedID()
+                                            returns the id object variable
+
+
+class StudentRegistration:
+
+Modifier and Type                       Method and Description
+void                                     main(String[] args)
+                                             contains logic for adding and dropping students to an enrolled students list
+
+
+void                                      dropStudent(StudentInfo[] enrolledStudents, QueueArray[] queue)
+                                             contains the logic for dropping a student and replacing the spot with a waitlisted
+                                             student if there are any in the queue.
+
+void                                      printStudents(StudentInfo[] enrolledStudnets, QueueArray[] queue)
+                                             prints the students that are in the enrolledstudents list along with
+                                             the ones in the wialist queue if there are any.
+
+
+
+Interfaces:
+
+QueueInterface  implemented by QueueArray
+ArrayInterface  implemented by StackArray
