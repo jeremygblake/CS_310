@@ -49,7 +49,17 @@ public class StackArray implements StackInterface
   {
     return (this.max == this.size);
   }
-  public void printStack()
+
+  public Object peek()
+  {
+    if(isEmpty())
+    {
+      throw new RuntimeException("Empty");
+    }
+    return stack[top];
+  }
+
+  public void displayStack()
   {
     if(isEmpty())
     {
