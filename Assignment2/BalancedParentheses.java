@@ -10,7 +10,7 @@ public class BalancedParentheses
     StackArray stack = new StackArray(30);
     int tmp_char = ' ';
 
-    while((tmp_char = br.read()) != -1)
+    while((tmp_char = br.read()) != -1)  //O(n)  complexity
     {
       //System.out.println((int)tmp_char);  // TEST for data output
       if((char)tmp_char == '}' && (stack.isEmpty() ||((int)stack.pop() + tmp_char) != 248)) //ascii addition to check

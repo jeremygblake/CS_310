@@ -25,14 +25,14 @@ public class StudentRegistration
 
     br.mark((int)file.length() + 1);          //marks the buffered Reader with
 
-    while((record = br.readLine()) != null)   //checks the number of lines in the file to initialize an array to hold the records
+    while((record = br.readLine()) != null) //O(n)  complexity  //checks the number of lines in the file to initialize an array to hold the records
     {
       numberEnrolled++;
     }
     br.reset();                               //resets the bufferedReader
     si_arr = new StudentInfo[numberEnrolled];
 
-    for(int j = 0; j < numberEnrolled; j++)
+    for(int j = 0; j < numberEnrolled; j++) //O(n)  complexity
     {
       record = br.readLine();
       nameThenId = record.split(" ", 2);              //splits the string into a 2 string array  that is then fed into the constructor for studentinfo
@@ -121,7 +121,7 @@ public class StudentRegistration
     int inID = in.nextInt();
 
     int x;
-    for (x = 0; x < enrolledStudents.length; x++)
+    for (x = 0; x < enrolledStudents.length; x++)   //Best Case O(n)          //Worst case O(n^2)   only if the queue is empty and we must shift the elements to adjust the array
     {
       if (enrolledStudents[x].getRedID() == inID)                               //checks for matching ID
       {
