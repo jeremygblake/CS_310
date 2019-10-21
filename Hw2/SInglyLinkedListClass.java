@@ -3,7 +3,6 @@ public class SinglyLinkedListClass<E> implements ListInterface<E>
   private Node<E> first;
   private Node<E> last;
 
-
   SinglyLinkedListClass()
   {
     this.first = null;
@@ -17,25 +16,25 @@ public class SinglyLinkedListClass<E> implements ListInterface<E>
 
     if(isEmpty())
     {
-      newNode.nextNode = head;
-      head = newNode;
-      last = head;
+      newNode.nextNode = first;
+      first = newNode;
+      last = first;
     }
-    else if(priority < head.priority)
+    else if(priority < first.priority)
     {
-      newNode.nextNode = head;
-      head = newNode;
-      last.nextNode = head;
+      newNode.nextNode = first;
+      first = newNode;
+      last.nextNode = first;
     }
     else if(priority > last.priority)
     {
-      newNode.nextNode = head;
+      newNode.nextNode = first;
       last.nextNode = newNode;
       newNode = last;
     }
     else
     {
-      p = head;
+      p = first;
       while(p.nextNode.priority <= priority)
       {
         p = p.nextNode;
@@ -45,42 +44,45 @@ public class SinglyLinkedListClass<E> implements ListInterface<E>
     }
   }
 
-  public E removeElement(E e)
+  public E removeElement(Node e)
   {
+    Node p = first;
     do {
-      if(e == p.data)
+      if(e == p)
       {
         return p.data;
       }
       p = p.nextNode;
-    }while(p != head);
+    }while(p != first);
+    return null;
   }
 
   public E minElement()
   {
     if(isEmpty())
     {
-      return null;
+      throw new NullPointerException();
     }
     else
     {
-      return head.data;
+      return first.data;
     }
+  }
     public int minPriority()
     {
-      if(isEmpty)
+      if(isEmpty())
       {
-        return null;
+        throw new NullPointerException();
       }
       else
       {
-        return head.priority
+        return first.priority;
       }
     }
 
   public void decrement(float decrementUnit)
   {
-    Node p = head;
+    Node p = first;
     do
     {
       boolean isPositive = p.data.decrement(decrementUnit);
@@ -90,20 +92,25 @@ public class SinglyLinkedListClass<E> implements ListInterface<E>
       }
       p = p.nextNode;
     }
-    while(p != head);
-  }
-  public boolean isEmpty()
-  {
-    return (head == null);
+    while(p != first);
   }
 
-  public void Display()
+  public boolean isEmpty()
   {
-    Node p = head;
+    return (first == null);
+  }
+
+  public void display()
+  {
+    if(isEmpty())
+    {
+      throw new NullPointerException();
+    }
+    Node p = first;
     do {
       System.out.println(p.data+" "+p.priority);
       p = p.nextNode;
-    }while(p != head);
+    }while(p != first);
   }
 
 

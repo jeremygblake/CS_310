@@ -28,8 +28,8 @@ public class ProcessInfo
 
   public boolean decrementTime(float decrementUnit)
   {
-    this.time = thie.time - decrementUnit;
-    if(this.time <= 0)
+    this.processTime -= decrementUnit;
+    if(this.processTime <= 0)
     {
       return false;
     }

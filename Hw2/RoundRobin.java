@@ -2,74 +2,38 @@ import java.util.Scanner;
 
 public class RoundRobin
 {
-  private float timeQuantum;
-  public SimpleInput in = new SimpleInput(System.in);
-  ListInterface<ProcessInfo> infoList = new SinglyLinkedListClass<ProcessInfo>();
 
-  public static void main(Stringp[] args)
+  public static void main(String[] args)
   {
-    while(true)
-    {
-      System.out.println("Enter Time Quantum");
-      int timeQuantum = in.intInput();
-      roundRobinLoop();
-
-    }
-  }
+    Scanner in = new Scanner(System.in);
+    ListInterface<ProcessInfo> infoList = new SinglyLinkedListClass<ProcessInfo>();
 
 
-
-  public void roundRobinLoop()
-  {
+    System.out.println("Enter Time Quantum");
+    float timeQuantum = in.nextInt();
     while(true)
     {
       System.out.println("[1] Enter a Process\n\n[2] Start Execution");
-      int ans = in.intInput();
+      int ans = in.nextInt();
 
       if(ans == 1)
       {
         System.out.println("Enter Process Name: ");
-        String name = in.stringInput();
+        String name = in.nextLine();
         System.out.println("Enter Process Priority: ");
-        int priority = in.intInput();
+        int priority = in.nextInt();
         System.out.println("Enter Process Time: ");
-        float time = in.floatInput();
+        float time = in.nextFloat();
 
-        ProcessInfo pi = new ProcessInfo(name, priority, time);
+        ProcessInfo pi = new ProcessInfo(time, priority, name);
 
         infoList.insertItem(pi, pi.getPriority());
-
       }
       else if(ans == 2)
       {
         infoList.decrement(timeQuantum);
+        infoList.display();
       }
     }
   }
-
-  class SimpleInput
-  {
-    Scanner in;
-
-    SimpleInput(Object type)
-    {
-      Scanner = new Scanner(type);
-    }
-
-    public int intInput()
-    {
-      return in.nextInt();
-    }
-    public String stringInput()
-    {
-      return in.nextLine();
-    }
-    public float floatInput()
-    {
-      return in.nextFloat();
-    }
-  }
-
-
-
 }
