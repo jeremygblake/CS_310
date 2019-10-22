@@ -1,4 +1,4 @@
-public class ProcessInfo
+public class ProcessInfo implements Comparable<ProcessInfo>
 {
   private float processTime;
   private int priority;
@@ -10,7 +10,11 @@ public class ProcessInfo
     this.priority = priority;
     this.name = name;
   }
-
+  public boolean setTime(float t)
+  {
+    this.processTime = t;
+    return(this.processTime > 0); //returns false if negative
+  }
   public float getProcessTime()
   {
     return this.processTime;
@@ -26,19 +30,17 @@ public class ProcessInfo
     return this.name;
   }
 
-  public boolean decrementTime(float decrementUnit)
-  {
-    this.processTime -= decrementUnit;
-    if(this.processTime <= 0)
-    {
-      return false;
-    }
-
-    return true;
-  }
-
   public String toString()
   {
     return "Name: " + this.name + " Priority: " + this.priority + " Process Time: " + this.processTime;
+  }
+
+  public int compareTo(ProcessInfo pi)
+  {
+    if(this.priority > pi.getPriority())
+    {
+      return 1;
+    }
+    return -1;
   }
 }

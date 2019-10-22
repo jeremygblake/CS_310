@@ -1,4 +1,4 @@
-public class SinglyLinkedListClass<E> implements ListInterface<E>
+public class SinglyLinkedListClass<E extends Comparable<E>> implements ListInterface<E>
 {
   private Node<E> tail = null;
   private int size = 0;
@@ -30,15 +30,17 @@ public class SinglyLinkedListClass<E> implements ListInterface<E>
 
   public void rotate()
   {
-    if(tail != null) tail = tail.getNext();
+    if(tail != null)
+      tail = tail.getNext();
   }
-  public void addItemByPriority(E e)
+  public void addItemByComparison(E e)
   {
-
+    
   }
+
   public void addFirst(E e)
   {
-    if(size == 0)
+    if(isEmpty())
     {
       tail = new Node<>(e,null);
       tail.setNext(tail);
@@ -61,9 +63,13 @@ public class SinglyLinkedListClass<E> implements ListInterface<E>
   {
     if(isEmpty()) return null;
     Node<E> head = tail.getNext();
-    if(head == tail) tail = null;
-    else
-    {tail.setNext(head.getNext());}
+    if(head == tail)
+    {
+      tail = null;
+    }else
+    {
+      tail.setNext(head.getNext());
+    }
     size--;
     return head.getElement();
 
@@ -71,12 +77,10 @@ public class SinglyLinkedListClass<E> implements ListInterface<E>
 
   public void display()
   {
-    Node x = tail.getNext();
-    do {
-      System.out.println(x.getElement().toString());
+    for(int i = 0; i < size; i++)
+    {
+      System.out.println(first().toString());
       rotate();
-
-    } while (x != tail.getNext());
+    }
   }
-
 }

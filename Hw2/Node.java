@@ -1,7 +1,5 @@
-public class Node<E>
+public class Node<E extends Comparable<E>>
 {
-
-	private int priority;
 	private E data;
 	private Node<E> nextNode;
 
@@ -26,5 +24,10 @@ public class Node<E>
 	public String toString()
 	{
 		return data.toString();
+	}
+
+	public int compareTo(E e)
+	{
+		return this.data.compareTo(e);
 	}
 }

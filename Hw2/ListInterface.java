@@ -8,6 +8,6 @@ public interface ListInterface<E>
 	public void 		addFirst(E e);
 	public void 		addLast(E e);
 	public E 				removeFirst();
-	public void     addItemByPriority(E e);
+	public void     addItemByComparison(E e);
 	public void     display();
 }
