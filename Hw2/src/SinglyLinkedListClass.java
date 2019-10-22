@@ -35,7 +35,16 @@ public class SinglyLinkedListClass<E extends Comparable<E>> implements ListInter
   }
   public void addItemByComparison(E e)
   {
-    
+
+    if(isEmpty())
+    {
+      addFirst(e);
+    }
+    else if(tail.compareTo(e) == 1)
+    {
+
+    }
+
   }
 
   public void addFirst(E e)
