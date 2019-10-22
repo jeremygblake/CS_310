@@ -36,4 +36,9 @@ public class ProcessInfo
 
     return true;
   }
+
+  public String toString()
+  {
+    return "Name: " + this.name + " Priority: " + this.priority + " Process Time: " + this.processTime;
+  }
 }

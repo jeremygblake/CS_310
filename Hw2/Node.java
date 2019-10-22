@@ -1,13 +1,30 @@
-public class Node<E>{
+public class Node<E>
+{
 
-	public int priority;
-	public E data;
-	public Node<E> nextNode;
+	private int priority;
+	private E data;
+	private Node<E> nextNode;
 
-	public Node(E i, int pr)
+	public Node(E e, Node<E> n)
 	{
-		data=i;
-		priority=pr;
-		nextNode=null;
+		this.data = e;
+		this.nextNode = n;
+	}
+	public Node<E> getNext()
+	{
+		return nextNode;
+	}
+	public E getElement()
+	{
+		return data;
+	}
+	public void setNext(Node<E> n)
+	{
+		nextNode = n;
+	}
+
+	public String toString()
+	{
+		return data.toString();
 	}
 }

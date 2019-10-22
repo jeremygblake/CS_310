@@ -1,118 +1,82 @@
 public class SinglyLinkedListClass<E> implements ListInterface<E>
 {
-  private Node<E> first;
-  private Node<E> last;
+  private Node<E> tail = null;
+  private int size = 0;
 
-  SinglyLinkedListClass()
+  public SinglyLinkedListClass(){}
+
+  public int size()
   {
-    this.first = null;
-    this.last = null;
-  }
-
-  public void insertItem(E item, int priority)
-  {
-    Node newNode,p;
-    Node<E> newNode = new Node(item, priority);
-
-    if(isEmpty())
-    {
-      newNode.nextNode = first;
-      first = newNode;
-      last = first;
-    }
-    else if(priority < first.priority)
-    {
-      newNode.nextNode = first;
-      first = newNode;
-      last.nextNode = first;
-    }
-    else if(priority > last.priority)
-    {
-      newNode.nextNode = first;
-      last.nextNode = newNode;
-      newNode = last;
-    }
-    else
-    {
-      p = first;
-      while(p.nextNode.priority <= priority)
-      {
-        p = p.nextNode;
-      }
-      newNode.nextNode = p.nextNode;
-      p.nextNode = newNode;
-    }
-  }
-
-  public E removeElement(Node e)
-  {
-    Node p = first;
-    do {
-      if(e == p)
-      {
-        return p.data;
-      }
-      p = p.nextNode;
-    }while(p != first);
-    return null;
-  }
-
-  public E minElement()
-  {
-    if(isEmpty())
-    {
-      throw new NullPointerException();
-    }
-    else
-    {
-      return first.data;
-    }
-  }
-    public int minPriority()
-    {
-      if(isEmpty())
-      {
-        throw new NullPointerException();
-      }
-      else
-      {
-        return first.priority;
-      }
-    }
-
-  public void decrement(float decrementUnit)
-  {
-    Node p = first;
-    do
-    {
-      boolean isPositive = p.data.decrement(decrementUnit);
-      if(!isPositive)
-      {
-        removeElement(p);
-      }
-      p = p.nextNode;
-    }
-    while(p != first);
+    return size;
   }
 
   public boolean isEmpty()
   {
-    return (first == null);
+    return size == 0;
+  }
+
+  public E first()
+  {
+    if(isEmpty()) return null;
+
+    return tail.getNext().getElement();
+  }
+
+  public E last()
+  {
+    if(isEmpty()) return null;
+    return tail.getElement();
+  }
+
+  public void rotate()
+  {
+    if(tail != null) tail = tail.getNext();
+  }
+  public void addItemByPriority(E e)
+  {
+
+  }
+  public void addFirst(E e)
+  {
+    if(size == 0)
+    {
+      tail = new Node<>(e,null);
+      tail.setNext(tail);
+    }
+    else
+    {
+      Node<E> newest = new Node<>(e, tail.getNext());
+      tail.setNext(newest);
+    }
+    size++;
+  }
+
+  public void addLast(E e)
+  {
+    addFirst(e);
+    tail = tail.getNext();
+  }
+
+  public E removeFirst()
+  {
+    if(isEmpty()) return null;
+    Node<E> head = tail.getNext();
+    if(head == tail) tail = null;
+    else
+    {tail.setNext(head.getNext());}
+    size--;
+    return head.getElement();
+
   }
 
   public void display()
   {
-    if(isEmpty())
-    {
-      throw new NullPointerException();
-    }
-    Node p = first;
+    Node x = tail.getNext();
     do {
-      System.out.println(p.data+" "+p.priority);
-      p = p.nextNode;
-    }while(p != first);
+      System.out.println(x.getElement().toString());
+      rotate();
+
+    } while (x != tail.getNext());
   }
-
-
 
 }

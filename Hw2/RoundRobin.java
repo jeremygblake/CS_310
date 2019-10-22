@@ -26,12 +26,11 @@ public class RoundRobin
         float time = in.nextFloat();
 
         ProcessInfo pi = new ProcessInfo(time, priority, name);
-
-        infoList.insertItem(pi, pi.getPriority());
+        infoList.addLast(pi);
+        //infoList.addItemByPriority(pi, pi.getPriority());
       }
       else if(ans == 2)
       {
-        infoList.decrement(timeQuantum);
         infoList.display();
       }
     }
