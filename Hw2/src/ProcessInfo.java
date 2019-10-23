@@ -37,7 +37,7 @@ public class ProcessInfo implements Comparable<ProcessInfo>
 
   public int compareTo(ProcessInfo pi)
   {
-    if(this.priority > pi.getPriority())
+    if(this.priority >= pi.getPriority())
     {
       return 1;
     }
