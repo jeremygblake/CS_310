@@ -1,8 +1,11 @@
 import java.util.Scanner;
 
-public class PQProcess {
+public class MainProgram {
 
     private static Scanner in = new Scanner(System.in);
+    private static HeapClass<ProcessInfo> heap = new HeapClass<ProcessInfo>(10, new ProcessInfo(5, -100, "NULL POSITION OBJECT"));
+
+
 
     private static void enterProcess()
     {
@@ -14,43 +17,33 @@ public class PQProcess {
         float time = in.nextFloat();
 
         ProcessInfo pi = new ProcessInfo(time, priority, name);
-        //TODO: ADD pi to the Heap array
+        heap.add(pi);
     }
 
-    private static  void buildHeap()
-    {
 
-    }
-
-    private static void deleteHighestPriority()
-    {
-
-    }
-
-    private static void checkHighestPriorityItem()
-    {
-
-    }
-    private static void checkHighestPriority()
-    {
-
-    }
-    private static void displayHeap()
-    {
-
-    }
-    private static void exit()
-    {
-        System.exit(0);
-    }
 
     public static void main(String[] args)
     {
+        heap.add(new ProcessInfo(5, 1, "A"));
+        heap.display();
+        heap.add(new ProcessInfo(5, 2, "B"));
+        heap.display();
+
+        heap.add(new ProcessInfo(5, 1, "D"));
+        heap.display();
+
+        heap.add(new ProcessInfo(5, 5, "E"));
+        heap.display();
+
+        heap.add(new ProcessInfo(5, 3, "F"));
+        heap.display();
+
+
+
         while(true)
         {
             System.out.println("[1] Enter a process\n\n[2] Build Heap\n\n[3] Delete Highest Priority\n\n[4]Check Highest Priority Item\n\n[5]Check Highest Priority\n\n[6]Display Heap\n\n[7] Exit");
             int ans = in.nextInt();
-            ans--;
             switch(ans)
             {
                 case 1:
@@ -59,17 +52,21 @@ public class PQProcess {
                 case 2:
                     break;
                 case 3:
+                    heap.removeMax();
                     break;
                 case 4:
+                    System.out.println(heap.max().toString());
                     break;
                 case 5:
+                    System.out.println(heap.max().getPriority());
                     break;
                 case 6:
-                    break;
-                case 7:
+                    heap.display();
                     break;
                 default:
-                    break;
+                    //exits
+                    return;
+
             }
         }
     }

@@ -40,14 +40,14 @@ public class SinglyLinkedListClass<E extends Comparable<E>> implements ListInter
     {
       addFirst(e);
     }
-    else if(tail.compareTo(e) == 1)
+    else if(tail.compareTo(e) >= 0)
     {
       addLast(e);
     }
     else
     {
       Node x = tail.getNext();
-      while(x.getNext().compareTo(e) == 1)
+      while(x.getNext().compareTo(e) >= 0)
       {
         x = x.getNext();
       }
