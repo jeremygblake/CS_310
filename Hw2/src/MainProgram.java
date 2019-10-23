@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class MainProgram {
 
     private static Scanner in = new Scanner(System.in);
-    private static HeapClass<ProcessInfo> heap = new HeapClass<ProcessInfo>(10, new ProcessInfo(5, -100, "NULL POSITION OBJECT"));
+    private static HeapClass<ProcessInfo> heap = new HeapClass<ProcessInfo>(10, new ProcessInfo(5, Integer.MAX_VALUE, "NULL POSITION OBJECT"));
 
 
 
