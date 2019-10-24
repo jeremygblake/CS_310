@@ -5,7 +5,8 @@ public class HeapClass <E extends Comparable<E>> {
     private int size;
     private int maxsize;
 
-    public HeapClass(int capacity, E initial) {
+    public HeapClass(int capacity, E initial)
+    {
         this.maxsize = capacity;
         this.size = 0;
         heap = new Object[this.maxsize + 1];
@@ -13,25 +14,26 @@ public class HeapClass <E extends Comparable<E>> {
     }
     private int parent(int pos)
     {
-        return pos/ 2;
+        return pos / 2;
     }
     private int leftChild(int pos)
     {
-        return 2 * pos;
+        return (2 * pos);
     }
     private int rightChild(int pos)
     {
-        return 2 * pos + 1;
+        return (2 * pos) + 1;
     }
     private boolean isLeaf(int pos)
     {
-        if(pos>= (size /2) && pos <= size)
+        if(pos > (size /2) && pos <= size)
         {
             return true;
         }
         return false;
     }
-    public void add(E e) {
+    public void add(E e)
+    {
         heap[++size] = e;
         int pos = size;
         while(((E)heap[pos]).compareTo((E)heap[parent(pos)]) == 1)
@@ -40,12 +42,12 @@ public class HeapClass <E extends Comparable<E>> {
             pos = parent(pos);
         }
     }
-    private void swap(int fpos, int spos)
+    private void swap(int one, int two)
     {
-        E tmp;
-        tmp =(E) heap[fpos];
-        heap[fpos] = heap[spos];
-        heap[spos] = tmp;
+
+        E tmp =(E) heap[one];
+        heap[one] = heap[two];
+        heap[two] = tmp;
     }
     public E removeMax()
     {
@@ -57,8 +59,6 @@ public class HeapClass <E extends Comparable<E>> {
     public E max()
     {
         E max = (E)heap[1];
-        heap[1] = heap[size--];
-        heapify(1);
         return max;
     }
     public void heapify(int pos)
@@ -69,7 +69,7 @@ public class HeapClass <E extends Comparable<E>> {
         }
         if(((E)heap[pos]).compareTo((E)heap[leftChild(pos)]) == -1 ||((E)heap[pos]).compareTo((E)heap[rightChild(pos)]) == -1 )
         {
-            if( ((E)heap[leftChild(pos)]).compareTo((E)heap[rightChild(pos)]) == 1)
+            if(((E)heap[leftChild(pos)]).compareTo((E)heap[rightChild(pos)]) == 1)
             {
                 swap(pos, leftChild(pos));
                 heapify(leftChild(pos));
@@ -81,13 +81,21 @@ public class HeapClass <E extends Comparable<E>> {
             }
         }
     }
+    public void displayHeap()
+    {
+        for (int i = 1; i <= size / 2; i++) {
+            System.out.print(" PARENT : " + heap[i] + " LEFT : " +
+                    heap[2*i] + " RIGHT :" + heap[2*i+1]);
+            System.out.println();
+        }
+    }
+
     public void display()
     {
-        for(int i = 1; i <= size; i++)
+        for(int i = 1; i < size; i++)
         {
-            System.out.println(((E)heap[i]).toString());
+            System.out.println(heap[i]);
         }
-        System.out.println("\n");
     }
 }
 
