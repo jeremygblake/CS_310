@@ -1,7 +1,7 @@
 
 NAME: Jeremy Goold
 ID: 834570403
-
+!!!!PLEASE NOTE THAT THIS PROJECT IS ASSUMING THAT A HIGHER INTEGER MEANS A HIGHER PRIORITY!!!!
 
 ******* DESCRIPTION ****************************************************************************************************************************************
 The following source code is for 2 different sets of projects.  We will be calling this Part A and Part B

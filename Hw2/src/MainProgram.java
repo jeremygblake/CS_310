@@ -20,13 +20,6 @@ public class MainProgram {
 
     public static void main(String[] args)
     {
-        heap.add(new ProcessInfo(5, 1, "A"));
-        heap.add(new ProcessInfo(5, 5, "B"));
-        heap.add(new ProcessInfo(5, 1, "D"));
-        heap.add(new ProcessInfo(5, 6, "E"));
-        heap.add(new ProcessInfo(5, 5, "F"));
-        heap.display();
-
         while(true)
         {
             System.out.println("\n\n\n" +
@@ -60,6 +53,8 @@ public class MainProgram {
                     break;
                 case 6:
                     heap.display();
+                    System.out.println("\n\nHEAP RELATIONSHIPS");
+                    heap.displayHeap();
                     break;
                 default:
                     //exits

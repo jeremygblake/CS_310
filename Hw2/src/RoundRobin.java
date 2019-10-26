@@ -29,23 +29,6 @@ public class RoundRobin
       }
       else if(ans == 2)
       {
-        System.out.println("\n\n\nADDING NODES");
-
-        infoList.addItemByComparison(new ProcessInfo(4,5,"A"));
-        infoList.addItemByComparison(new ProcessInfo(5,4,"B"));
-        infoList.addItemByComparison(new ProcessInfo(5,2,"C"));
-        infoList.addItemByComparison(new ProcessInfo(5,10,"D"));
-        infoList.addItemByComparison(new ProcessInfo(5,1,"E"));
-        infoList.addItemByComparison(new ProcessInfo(5,1,"F"));
-        infoList.addItemByComparison(new ProcessInfo(5,1,"G"));
-        infoList.addItemByComparison(new ProcessInfo(5,1,"H"));
-        infoList.addItemByComparison(new ProcessInfo(5,1,"I"));
-        infoList.addItemByComparison(new ProcessInfo(4,2,"J"));
-        infoList.addItemByComparison(new ProcessInfo(5,1,"K"));
-        infoList.addItemByComparison(new ProcessInfo(5,1,"L"));
-
-
-
         System.out.println("=========== INITIAL    =============\n");
         infoList.display();
         System.out.println("=========== PROCESSING =============\n");
