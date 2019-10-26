@@ -44,7 +44,6 @@ public class HeapClass <E extends Comparable<E>> {
     }
     private void swap(int one, int two)
     {
-
         E tmp =(E) heap[one];
         heap[one] = heap[two];
         heap[two] = tmp;
@@ -98,14 +97,3 @@ public class HeapClass <E extends Comparable<E>> {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
