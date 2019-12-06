@@ -5,8 +5,6 @@ public class MainProgram {
     private static Scanner in = new Scanner(System.in);
     private static HeapClass<ProcessInfo> heap = new HeapClass<ProcessInfo>(10, new ProcessInfo(5, Integer.MAX_VALUE, "NULL POSITION OBJECT"));
 
-
-
     private static void enterProcess()
     {
         System.out.println("Enter Process Name: ");
@@ -20,29 +18,20 @@ public class MainProgram {
         heap.add(pi);
     }
 
-
-
     public static void main(String[] args)
     {
-        heap.add(new ProcessInfo(5, 1, "A"));
-        heap.display();
-        heap.add(new ProcessInfo(5, 2, "B"));
-        heap.display();
-
-        heap.add(new ProcessInfo(5, 1, "D"));
-        heap.display();
-
-        heap.add(new ProcessInfo(5, 5, "E"));
-        heap.display();
-
-        heap.add(new ProcessInfo(5, 3, "F"));
-        heap.display();
-
-
-
         while(true)
         {
-            System.out.println("[1] Enter a process\n\n[2] Build Heap\n\n[3] Delete Highest Priority\n\n[4]Check Highest Priority Item\n\n[5]Check Highest Priority\n\n[6]Display Heap\n\n[7] Exit");
+            System.out.println("\n\n\n" +
+                    "[1] Enter a process\n\n" +
+                    "[2] Build Heap\n\n" +
+                    "[3] Delete Highest Priority\n\n" +
+                    "[4] Check Highest Priority Item\n\n" +
+                    "[5] Check Highest Priority\n\n" +
+                    "[6] Display Heap\n\n" +
+                    "[7] Exit");
+
+
             int ans = in.nextInt();
             switch(ans)
             {
@@ -50,9 +39,11 @@ public class MainProgram {
                     enterProcess();
                     break;
                 case 2:
+                    System.out.println("Heap Built");
                     break;
                 case 3:
-                    heap.removeMax();
+                    ProcessInfo x = heap.removeMax();
+                    System.out.println(x + " WAS DELETED");
                     break;
                 case 4:
                     System.out.println(heap.max().toString());
@@ -62,6 +53,8 @@ public class MainProgram {
                     break;
                 case 6:
                     heap.display();
+                    System.out.println("\n\nHEAP RELATIONSHIPS");
+                    heap.displayHeap();
                     break;
                 default:
                     //exits
