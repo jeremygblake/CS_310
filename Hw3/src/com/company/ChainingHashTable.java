@@ -25,9 +25,7 @@ public class ChainingHashTable<K extends Comparable<K>, V> implements MapInterfa
     {
         if(k == null) throw new NullPointerException("The key is null");
 
-
-        Key key = new Key((String) k);
-        int index = key.hashCode() % TABLE_SIZE;
+        int index = hash(k) % TABLE_SIZE;
 
         DataClass<K,V> tempData = new DataClass<>(k, null);
 
@@ -41,13 +39,18 @@ public class ChainingHashTable<K extends Comparable<K>, V> implements MapInterfa
         return null;
     }
 
+    private int hash(K k)
+    {
+        Key key = new Key((String) k);
+        return key.hashCode() & 0xf7777777;
+    }
+
     public V put(K k, V v)
     {
-        if (k == null) throw new NullPointerException(  "The parameterized Key was passed as null");
-        if (v == null) throw new NullPointerException("The parameterized value was passed as null");
+        if (k == null)          throw new NullPointerException(  "The parameterized Key was passed as null");
+        if (v == null)          throw new NullPointerException("The parameterized value was passed as null");
 
-        Key key = new Key((String) k);
-        int index = key.hashCode() % TABLE_SIZE;
+        int index = hash(k) % TABLE_SIZE;
 
         DataClass<K,V> tempData = new DataClass<K,V>(k,v);
         V temp = null;
@@ -69,8 +72,7 @@ public class ChainingHashTable<K extends Comparable<K>, V> implements MapInterfa
         if (k == null)
             throw new NullPointerException("Key is null");
 
-        Key key = new Key((String) k);
-        int index = key.hashCode() % TABLE_SIZE;
+        int index = hash(k) % TABLE_SIZE;
 
         for (DataClass<K, V> d : table[index])
             if (d.key.compareTo(k) == 0) {
