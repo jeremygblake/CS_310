@@ -9,8 +9,6 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
 {
     private int n;
     private int TABLE_SIZE;
-    //private K[] keys;
-    //private V[] values;
     private DataClass<K,V>[] table;
 
 
@@ -29,11 +27,11 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
     public V get(K k) {
         if (k == null) throw new NullPointerException("The parameterized Key was passed as null");
 
-        for(int index = hash(k) % TABLE_SIZE; keys[index] != null; index = (index + 1) % TABLE_SIZE)
+        for(int index = hash(k) % TABLE_SIZE; table[index] != null; index = (index + 1) % TABLE_SIZE)
         {
-            if(keys[index].equals(k))
+            if(table[index].getKey().equals(k))
             {
-                return values[index];
+                return table[index].getValue();
             }
         }
         return null;
@@ -46,16 +44,15 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
         if(n == TABLE_SIZE) throw new IllegalStateException("Table full");
 
         int index;
-        for(index = hash(k) % TABLE_SIZE; keys[index] != null; index = (index + 1) % TABLE_SIZE)
+        for(index = hash(k) % TABLE_SIZE; table[index] != null; index = (index + 1) % TABLE_SIZE)
         {
-            if(keys[index].equals(k))
+            if(table[index].getKey().equals(k))
             {
-                values[index] = v;
+                table[index].setValue(v);
                 return null;   //TODO: FIX THIS dont return null  ? old value
             }
         }
-        keys[index] = k;
-        values[index] = v;
+        table[index] = new DataClass<>(k,v);
         n++;
         // should implement assert with a check
         return null;
