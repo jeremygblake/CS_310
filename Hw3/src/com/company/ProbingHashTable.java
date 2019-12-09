@@ -1,25 +1,24 @@
 package com.company;
 
 import javax.xml.crypto.Data;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@SuppressWarnings("All")
 public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterface<K,V>
 {
     private int n;
     private int TABLE_SIZE;
-    private DataClass<K,V>[] table;
+    private Object[] table;
 
 
-
-
-
-    public ProbingHashTable(int n)
+    public ProbingHashTable(int size)
     {
-        TABLE_SIZE = n;
+        TABLE_SIZE = size;
         n = 0;
-        table = new DataClass[n];
+        table = new Object[size];
 
     }
 
@@ -29,9 +28,9 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
 
         for(int index = hash(k) % TABLE_SIZE; table[index] != null; index = (index + 1) % TABLE_SIZE)
         {
-            if(table[index].getKey().equals(k))
+            if(((DataClass<K, V>)table[index]).getKey().equals(k))
             {
-                return table[index].getValue();
+                return ((DataClass<K, V>)table[index]).getValue();
             }
         }
         return null;
@@ -46,9 +45,9 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
         int index;
         for(index = hash(k) % TABLE_SIZE; table[index] != null; index = (index + 1) % TABLE_SIZE)
         {
-            if(table[index].getKey().equals(k))
+            if(((DataClass<K, V>)table[index]).getKey().equals(k))
             {
-                table[index].setValue(v);
+                ((DataClass<K, V>)table[index]).setValue(v);
                 return null;   //TODO: FIX THIS dont return null  ? old value
             }
         }
@@ -74,24 +73,22 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
         V v;
         int index = hash(k) % TABLE_SIZE;
 
-        while(!k.equals(keys[index]))
+        while(!k.equals(((DataClass<K, V>)table[index]).getKey()))
             index = (index + 1) % TABLE_SIZE;
 
-        v = values[index];
-        keys[index] = null;
-        values[index] = null;
+        v = ((DataClass<K, V>)table[index]).getValue();
+        table[index] = null;
+
 
         index = (index + 1) % TABLE_SIZE;
 
-        while (keys[index] != null)
+        while (table[index] != null)
         {
-            V v_rehash = values[index];  //rehash to optimize next put / remove / get
-            K k_rehash = keys[index];
+            DataClass<K,V> data_rehash = ((DataClass<K, V>)table[index]);  //rehash to optimize next put / remove / get
 
-            values[index] = null;
-            keys[index] = null;
+            table[index] = null;
             n--;
-            put(k_rehash, v_rehash);
+            put(data_rehash.getKey(), data_rehash.getValue());
             index = (index + 1) % TABLE_SIZE;
         }
 
@@ -119,6 +116,21 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
         return new ValueIteratorObject<>();
     }
 
+    private Set<K> keySet()
+    {
+        if(n == 0) return null;
+
+        Set<K> set = new LinkedHashSet<>();
+
+        for(int i = 0; i < table.length; i++)
+        {
+            if(table[i] != null)
+            {
+                set.add(((DataClass<K, V>)table[i]).getKey());
+            }
+        }
+        return set;
+    }
 
     private class KeyIteratorObject<T> implements Iterator<T>
     {
@@ -127,14 +139,15 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
 
         public KeyIteratorObject()
         {
-            //ks = (T[]) keys;
+            ks =  (T[]) keySet().toArray();
+            Arrays.sort(ks);
             i = 0;
 
         }
 
         @Override
         public boolean hasNext() {
-            return i < keys.length;
+            return i < ks.length;
         }
 
         @Override
@@ -147,10 +160,6 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
         }
     }
 
-    public Set<K> keySet() {
-
-        return null;
-    }
 
     private class ValueIteratorObject<T> implements Iterator<T>
     {
@@ -171,6 +180,32 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
         public T next() {
             return (T) get(iter.next());
         }
+    }
+
+    public static void main(String[] args)
+    {
+        int table_size = 50;
+
+        ProbingHashTable cht = new ProbingHashTable(table_size);
+
+        cht.put("abc", new String("Jeremy"));
+        cht.put("111", new String("SOME"));
+        cht.put("123", new String("SUM"));
+
+        cht.remove("abc");
+
+
+
+        for (Iterator itr = cht.values(); itr.hasNext(); ) {
+            Object i = itr.next();
+            System.out.println(i.toString());
+        }
+
+        //cht.remove("abc");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println(cht.get("111"));
+        System.out.println(cht.get("123"));
+
     }
 
 

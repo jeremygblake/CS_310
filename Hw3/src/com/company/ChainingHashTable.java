@@ -1,8 +1,10 @@
 package com.company;
 
-import javax.xml.crypto.Data;
+import java.io.*;
 import java.util.*;
 
+
+@SuppressWarnings("All")
 public class ChainingHashTable<K extends Comparable<K>, V> implements MapInterface<K, V>, Iterable<K>
 {
     private LinkedList<DataClass<K,V>>[] table;
@@ -156,34 +158,29 @@ public class ChainingHashTable<K extends Comparable<K>, V> implements MapInterfa
 
 
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException {
+
         int table_size = 50;
 
         ChainingHashTable cht = new ChainingHashTable(table_size);
 
-        cht.put("abc", new String("Jeremy"));
-        cht.put("111", new String("111"));
-        cht.put("123", new String("123"));
-
-        cht.remove("abc");
+        BufferedReader br = new BufferedReader(new FileReader("src/Records.txt"));
 
 
-        //System.out.println(cht.get("abc"));
-        //System.out.println(cht.get("111"));
-        //System.out.println(cht.get("123"));
+        br.readLine(); //Remove the DATA Labels
+        String dataPair;
 
-
+        while((dataPair = br.readLine()) != null)
+        {
+            String[] str = dataPair.split("\\s+");  //regex for one or mare spaces
+            cht.put(str[0], str[1]);
+        }
 
 
         for (Iterator itr = cht.keys(); itr.hasNext(); ) {
             Object i = itr.next();
             System.out.println(i.toString());
         }
-
-        //cht.remove("abc");
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
-
 
     }
 }
