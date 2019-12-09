@@ -1,4 +1,4 @@
-package com.company;
+package com.jeremygblake;
 
 public class Key {
     private String key;

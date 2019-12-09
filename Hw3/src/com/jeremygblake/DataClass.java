@@ -1,4 +1,4 @@
-package com.company;
+package com.jeremygblake;
 
 public class DataClass<K extends Comparable<K>, V> implements Comparable<DataClass<K,V>> {
     private final K key;

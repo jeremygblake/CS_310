@@ -1,4 +1,4 @@
-package com.company;
+package com.jeremygblake;
 
 import java.io.*;
 import java.util.*;

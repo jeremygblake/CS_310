@@ -1,4 +1,4 @@
-package com.company;
+package com.jeremygblake;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -22,7 +22,7 @@ public class JUnit<T extends MapInterface> {
 
         BufferedReader br = new BufferedReader(new FileReader("src/Records.txt"));
 
-
+        System.out.println("Currently Running " + this.testClass.getClass().getSimpleName());
         br.readLine(); //Remove the DATA Labels
         String dataPair;
 
@@ -34,10 +34,11 @@ public class JUnit<T extends MapInterface> {
 
         System.out.println("THE VALUE FOR B9S6Y  " + this.testClass.get("B9S6Y"));
 
-        this.testClass.remove("B9S6Y");
+        System.out.println("Removed VALUE FOR B9S6Y  " + this.testClass.remove("B9S6Y"));
 
         System.out.println("THE VALUE FOR B9S6Y  " + this.testClass.get("B9S6Y") + " But it does not exist as we can see");
 
+        System.out.println("Printing all values using iterator");
 
 
         Iterator itrValues = this.testClass.values();

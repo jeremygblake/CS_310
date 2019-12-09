@@ -1,8 +1,6 @@
-package com.company;
+package com.jeremygblake;
 
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.Set;
 
 public interface MapInterface< K, V>
 {

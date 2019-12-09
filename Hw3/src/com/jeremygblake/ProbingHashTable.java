@@ -1,8 +1,5 @@
-package com.company;
+package com.jeremygblake;
 
-import javax.xml.crypto.Data;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
