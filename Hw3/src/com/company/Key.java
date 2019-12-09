@@ -1,7 +1,7 @@
 package com.company;
 
 public class Key {
-    String key;
+    private String key;
 
     public Key(String key) {
         this.key = key;
@@ -12,7 +12,7 @@ public class Key {
         int hCode = 0;
 
         for (int i = 0; i < key.length(); i++) {
-            hCode += key.charAt(i) * Math.pow(51, key.length() - 1);
+            hCode += key.charAt(i) * 51;
         }
 
         return hCode;

@@ -1,6 +1,9 @@
 package com.company;
 
 import javax.xml.crypto.Data;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -182,30 +185,12 @@ public class ProbingHashTable<K extends Comparable<K>, V> implements MapInterfac
         }
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws IOException {
+
         int table_size = 50;
-
-        ProbingHashTable cht = new ProbingHashTable(table_size);
-
-        cht.put("abc", new String("Jeremy"));
-        cht.put("111", new String("SOME"));
-        cht.put("123", new String("SUM"));
-
-        cht.remove("abc");
-
-
-
-        for (Iterator itr = cht.values(); itr.hasNext(); ) {
-            Object i = itr.next();
-            System.out.println(i.toString());
-        }
-
-        //cht.remove("abc");
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println(cht.get("111"));
-        System.out.println(cht.get("123"));
-
+        ProbingHashTable pht = new ProbingHashTable(table_size);
+        JUnit ju = new JUnit(pht);
+        ju.run();
     }
 
 

@@ -156,32 +156,12 @@ public class ChainingHashTable<K extends Comparable<K>, V> implements MapInterfa
 
 
 
-
-
     public static void main(String[] args) throws IOException {
 
         int table_size = 50;
-
-        ChainingHashTable cht = new ChainingHashTable(table_size);
-
-        BufferedReader br = new BufferedReader(new FileReader("src/Records.txt"));
-
-
-        br.readLine(); //Remove the DATA Labels
-        String dataPair;
-
-        while((dataPair = br.readLine()) != null)
-        {
-            String[] str = dataPair.split("\\s+");  //regex for one or mare spaces
-            cht.put(str[0], str[1]);
-        }
-
-
-        for (Iterator itr = cht.keys(); itr.hasNext(); ) {
-            Object i = itr.next();
-            System.out.println(i.toString());
-        }
-
+        ChainingHashTable pht = new ChainingHashTable(table_size);
+        JUnit ju = new JUnit(pht);
+        ju.run();
     }
 }
 
